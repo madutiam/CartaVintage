@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cartinha</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="stage" role="main" aria-label="Fundo com carta no centro">
+    <div class="center-wrap">
+      <img src="envelope.png" alt="Envelope fechado - clique para abrir" id="cartinha" class="cartinha" tabindex="0" />
+
+      <img src="carta.png" alt="Carta aberta" id="poema" class="poema" aria-hidden="true" />
+
+      <div class="hint" id="hint">Clique no envelope</div>
+    </div>
+  </div>
+
+  <audio id="audio" preload="auto" src="musca.mp3" loop></audio>
+  <script src="script.js"></script>
+</body>
+</html>
