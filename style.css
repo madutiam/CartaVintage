@@ -1,0 +1,93 @@
+/* style.css */
+:root {
+    --bg: url('neutro.jpg');
+    --transition: 600ms;
+  }
+  
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  html, body {
+    height: 100%;
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    
+    /* ADICIONADO O FUNDO AQUI */
+    background-image: var(--bg);
+    background-size: cover;
+    background-position: center;
+  }
+  
+  /* Fundo */
+  .stage {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* O fundo já está no body, então o stage fica transparente */
+    padding: 20px;
+  }
+  
+  .center-wrap {
+    width: min(920px, 92vw);
+    display: grid;
+    place-items: center;
+    position: relative;
+    pointer-events: none;
+  }
+  
+  /* Envelope (visível) */
+  .cartinha {
+    width: min(420px, 70%);
+    cursor: pointer;
+    pointer-events: auto;
+    transition: transform var(--transition), opacity var(--transition);
+    user-select: none;
+    filter: drop-shadow(0 8px 20px rgba(0,0,0,.25));
+    z-index: 3;
+  }
+  
+  .cartinha:active { transform: scale(.97); }
+  
+  .cartinha.hidden {
+    opacity: 0;
+    transform: translateY(-30px) scale(.97);
+    pointer-events: none;
+  }
+  
+  /* Carta (invisível até revelar) */
+  .poema {
+    position: absolute;
+    width: min(600px, 80vw);
+    opacity: 0;
+    transform: translateY(20px) scale(.98);
+    transition: opacity var(--transition), transform var(--transition);
+    pointer-events: none;
+    filter: drop-shadow(0 8px 30px rgba(0,0,0,.22));
+    z-index: 2;
+    will-change: opacity, transform;
+  }
+  
+  .poema.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+    z-index: 4; /* fica acima do envelope quando visível */
+  }
+  
+  .hint {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(30,30,30,.85);
+    background: rgba(255,255,255,.65);
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 14px;
+    pointer-events: none;
+    backdrop-filter: blur(4px);
+  }
+  
+  @media (max-width: 600px) {
+    .cartinha { width: 84vw; }
+    .poema { width: 92vw; }
+  }
